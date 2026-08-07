@@ -301,7 +301,6 @@ assumes that the player receives approximately the expected workload.
 ## 8. Figure Regeneration
 
 ```bash
-python -m pip install -r requirements-report.txt
 python -m scripts.generate_research_report_figures
 ```
 
