@@ -61,14 +61,13 @@ docs/MODEL_CARD_V2.md   intended use, results, and limitations
 docs/REPRODUCIBILITY.md complete rebuild and experiment sequence
 docs/API_ENDPOINTS.md   NBA Stats endpoint and schema decisions
 docs/figures/           manuscript figures
-data/                   ignored local data workspace
-models/                 ignored fitted-model workspace
-reports/                ignored generated-report workspace
 ```
 
 Raw NBA data, cached API responses, processed datasets, fitted models,
-manifests, and generated experiment outputs are intentionally excluded from
-Git. The repository provides the code and commands needed to rebuild them.
+manifests, and generated experiment outputs are written locally to `data/`,
+`models/`, and `reports/`. These directories are intentionally excluded from
+Git and are created automatically when needed. The repository provides the
+code and commands needed to rebuild their contents.
 
 ## Installation
 
