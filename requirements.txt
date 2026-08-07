@@ -1,0 +1,9 @@
+nba_api==1.11.4
+pandas==2.3.2
+numpy==2.2.5
+pyarrow==25.0.0
+pytest==9.0.3
+scikit-learn==1.7.1
+joblib==1.5.2
+torch==2.11.0
+threadpoolctl==3.5.0

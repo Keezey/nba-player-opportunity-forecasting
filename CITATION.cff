@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or methodology, please cite it as below."
+title: "NBA Player Opportunity Forecasting Using Similar-Player Matchups and Residual Machine Learning"
+type: software
+authors:
+  - family-names: Fordham
+    given-names: Malachi
+version: 2.3.0
+date-released: 2026-08-07
+license: MIT
+repository-code: "https://github.com/Keezey/nba-player-opportunity-forecasting"
+url: "https://github.com/Keezey/nba-player-opportunity-forecasting"
+keywords:
+  - NBA analytics
+  - player tracking
+  - sports forecasting
+  - Elastic Net
+  - residual learning
+  - matchup modeling
+abstract: >-
+  A leakage-controlled Python pipeline that combines recent player baselines,
+  similar-player opponent evidence, sample-size shrinkage, robust multiplier
+  bounds, and residual machine learning to forecast field-goal attempts,
+  rebound chances, and rebounds for NBA regular-season player-games.
