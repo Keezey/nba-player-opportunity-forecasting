@@ -1,26 +1,18 @@
+# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
-.coverage
-htmlcov/
 .venv/
+
+# Local editor and operating-system files
 .vscode/
-.idea/
-build/
-dist/
-*.egg-info/
-data/
-models/
-reports/
 .DS_Store
 *.log
 
-# Local drafting and release-preparation notes
-docs/COMPREHENSIVE_RESEARCH_REPORT.md
-docs/GITHUB_RELEASE_CHECKLIST.md
-docs/REPORT_REVIEW_GUIDE.md
-docs/TECHNICAL_REPORT.md
-.github/pull_request_template.md
+# Generated project artifacts
+data/
+models/
+reports/
 
 # LaTeX build products
 *.aux
