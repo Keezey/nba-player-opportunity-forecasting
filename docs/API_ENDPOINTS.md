@@ -1,7 +1,6 @@
 # NBA API Endpoint Decisions
 
-The current model predicts FGA, rebound chances, and rebounds. Assist-related
-data is intentionally outside this version.
+The current model predicts FGA, rebound chances, and rebounds.
 
 ## Automatic Prediction
 
