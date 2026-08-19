@@ -15,8 +15,7 @@ contains 59,156 rows from the 2021-22 through 2025-26 regular seasons.
 
 ![Model pipeline](docs/figures/model_pipeline.png)
 
-[Read the research report](docs/research_report.pdf) or inspect its
-[LaTeX source](docs/RESEARCH_REPORT.tex).
+[Read the research report](docs/research_report.pdf).
 
 ## Results
 
@@ -60,7 +59,6 @@ only after its feature row has been constructed and validated.
 src/                    V1 and V2 modeling modules
 scripts/                data, experiment, training, and inference commands
 tests/                  offline unit and integration tests
-docs/RESEARCH_REPORT.tex manuscript source
 docs/MODEL_CARD_V2.md   intended use, results, and limitations
 docs/REPRODUCIBILITY.md complete rebuild and experiment sequence
 docs/API_ENDPOINTS.md   NBA Stats endpoint and schema decisions
