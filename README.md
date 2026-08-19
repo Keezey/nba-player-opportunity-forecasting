@@ -156,14 +156,6 @@ This project is intended for research, education, and historical analysis. It
 is not an injury-news service, a guarantee of player performance, or a complete
 wagering system.
 
-## Citation
-
-Citation metadata are available in [`CITATION.cff`](CITATION.cff). A plain-text
-reference is:
-
-> Fordham, M. (2026). *NBA Player Opportunity Forecasting Using Similar-Player
-> Matchups and Residual Machine Learning* (Version 2.3.0).
-
 ## License
 
 The source code is released under the [MIT License](LICENSE). This license does
