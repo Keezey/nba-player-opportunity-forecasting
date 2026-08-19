@@ -20,10 +20,11 @@ are corrected rebound chances multiplied by corrected conversion.
 
 ## Available Artifacts
 
-Two artifacts are produced locally and intentionally excluded from Git:
+Two final model bundles and their manifests are distributed under
+`artifacts/v2.3.0/`:
 
-- `models/v2_3_250_all_games.joblib`: default unconditional model.
-- `models/v2_3_250_normal_minutes.joblib`: conditional model trained only on
+- `v2_3_250_all_games.joblib`: default unconditional model.
+- `v2_3_250_normal_minutes.joblib`: conditional model trained only on
   games in which actual minutes remained near the pregame expectation.
 
 The normal-minutes model does not predict whether normal minutes will occur.
@@ -62,8 +63,8 @@ cutoff check. `as_of_date` must be strictly earlier than `game_date`.
 
 The local historical store contains regular-season box-score, advanced, and
 tracking data fetched through the unofficial `nba_api` wrapper. Raw NBA data,
-cached responses, processed Parquet datasets, generated reports, and model
-artifacts are not distributed in the Git repository.
+cached responses, processed Parquet datasets, intermediate models, and
+generated experiment outputs are not distributed in the Git repository.
 
 The final fitting data contains 59,156 eligible rows for 250 players across
 5,788 games. Eligibility requires enough prior qualifying tracking games to

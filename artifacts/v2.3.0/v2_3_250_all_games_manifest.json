@@ -1,0 +1,249 @@
+{
+  "artifacts": {
+    "model": {
+      "conversion_model": {
+        "lower_bound": 0.3829787234042553,
+        "parameters": {
+          "alpha": 0.003,
+          "l1_ratio": 0.1
+        },
+        "training_rows": 57969,
+        "upper_bound": 0.734537069064914
+      },
+      "has_conversion_model": true,
+      "path": "artifacts/v2.3.0/v2_3_250_all_games.joblib",
+      "sha256": "fcc6ffb1fa58ec819f0476de46ec0f2efdb6d6909513e80dc60dcc64f873386d"
+    },
+    "training_dataset": {
+      "columns": 52,
+      "date_from": "2021-10-29",
+      "date_to": "2026-04-12",
+      "games": 5788,
+      "path": "data/processed/releases/v2_3_250_all_games_training.parquet",
+      "players": 250,
+      "rows": 59156,
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25",
+        "2025-26"
+      ],
+      "sha256": "17a282bcb125c7b08074cfda56e6e16a636ed1bf7b3ac0e97fc9ff3f702e95ad"
+    }
+  },
+  "cohort_definition": {
+    "excluded_rows": 0,
+    "full_history_rows": 59156,
+    "name": "all",
+    "regular_minutes": {
+      "absolute_tolerance": 3.0,
+      "formula": "abs(actual_minutes - v1_pred_minutes) <= max(absolute_tolerance, relative_tolerance * v1_pred_minutes)",
+      "pregame_feature": false,
+      "relative_tolerance": 0.15
+    },
+    "selected_rows": 59156
+  },
+  "created_at_utc": "2026-07-15T01:43:53+00:00",
+  "feature_schema": {
+    "conversion_features": [
+      "baseline_reb_conversion",
+      "conversion_exposure",
+      "tracking_games_used",
+      "baseline_minutes",
+      "baseline_reb",
+      "baseline_reb_chances",
+      "baseline_reb_chances_per_min",
+      "profile_minutes",
+      "profile_reb_chances_per_min",
+      "profile_usage_rate",
+      "profile_touches_per_min",
+      "profile_starter_rate",
+      "n_similar_players",
+      "similarity_score_mean",
+      "similarity_score_std",
+      "numeric_distance_mean",
+      "position_penalty_mean",
+      "raw_reb_chances_multiplier",
+      "reb_chances_n_samples",
+      "v1_pred_minutes",
+      "profile_listed_position"
+    ],
+    "opportunity_features": [
+      "baseline_games_used",
+      "tracking_games_used",
+      "usual_minutes",
+      "min_minutes_threshold",
+      "baseline_minutes",
+      "baseline_fga",
+      "baseline_reb",
+      "baseline_reb_chances",
+      "baseline_fga_per_min",
+      "baseline_reb_chances_per_min",
+      "baseline_reb_conversion",
+      "profile_games_used",
+      "profile_minutes",
+      "profile_fga_per_min",
+      "profile_reb_chances_per_min",
+      "profile_usage_rate",
+      "profile_touches_per_min",
+      "profile_starter_rate",
+      "profile_starter_flag",
+      "n_similar_players",
+      "similarity_score_min",
+      "similarity_score_mean",
+      "similarity_score_max",
+      "similarity_score_std",
+      "numeric_distance_mean",
+      "position_penalty_mean",
+      "raw_fga_multiplier",
+      "fga_multiplier",
+      "fga_n_samples",
+      "fga_trust_weight",
+      "raw_reb_chances_multiplier",
+      "reb_chances_multiplier",
+      "reb_chances_n_samples",
+      "reb_chances_trust_weight",
+      "v1_pred_minutes",
+      "v1_pred_fga",
+      "v1_pred_reb_chances",
+      "v1_pred_reb",
+      "profile_listed_position"
+    ]
+  },
+  "model_type": "elastic_net",
+  "parameters": {
+    "conversion_parameters": {
+      "alpha": 0.003,
+      "l1_ratio": 0.1
+    },
+    "conversion_selection": {
+      "lower_bound": 0.38461538461538464,
+      "training_rows": 49809,
+      "upper_bound": 0.7368421052631579,
+      "usable_rows": 48757
+    },
+    "created_at_utc": "2026-07-15T01:42:02+00:00",
+    "model_parameters": {
+      "fga": {
+        "alpha": 0.005,
+        "l1_ratio": 1.0
+      },
+      "reb_chances": {
+        "alpha": 0.005,
+        "l1_ratio": 0.25
+      }
+    },
+    "model_scores": {
+      "fga": {
+        "v1_mae": 3.1446488869836258,
+        "v2_mae": 3.073880091059221
+      },
+      "reb_chances": {
+        "v1_mae": 3.0873415197467824,
+        "v2_mae": 2.9735918721220207
+      }
+    },
+    "model_type": "elastic_net",
+    "multiplier_bounds": {
+      "fga_lower": 0.5,
+      "fga_upper": 1.5,
+      "reb_chances_lower": 0.5,
+      "reb_chances_upper": 1.5
+    },
+    "parameter_role": "production_hyperparameters",
+    "regular_minutes": {
+      "absolute_tolerance": 3.0,
+      "relative_tolerance": 0.15
+    },
+    "schema_version": 1,
+    "selection": {
+      "bound_strategy": "fixed_0.50_1.50",
+      "methodology": "Parameters selected using only seasons before the named outer test season, then frozen before final all-history fitting.",
+      "outer_test_season": "2025-26",
+      "training_rows": 49809,
+      "training_seasons": [
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ]
+    },
+    "sources": {
+      "conversion_parameters": {
+        "path": "reports/v2_3_rebound_conversion/parameters.json",
+        "sha256": "0a95a72637b28c5b5dbce2ab6b89c18c4bd69cd18d722abf887954cedaab3396"
+      },
+      "multiplier_parameters": {
+        "path": "reports/v2_2_multiplier_bounds/parameters.json",
+        "sha256": "02aedaa1660cc160409f28b6d4aa52d5f60e4474b22ee6ee80b78783c91741b3"
+      }
+    },
+    "training_cohort": "all",
+    "trust_objective": 0.9917843306306968,
+    "trust_parameters": {
+      "high_sample_threshold": 10,
+      "high_trust_weight": 0.65,
+      "low_sample_threshold": 5,
+      "low_trust_weight": 0.45,
+      "max_sample_threshold": 15,
+      "max_trust_weight": 0.9
+    }
+  },
+  "random_state": 42,
+  "release_version": "2.3.0",
+  "runtime": {
+    "packages": {
+      "joblib": "1.5.2",
+      "nba_api": "1.11.4",
+      "numpy": "2.2.5",
+      "pandas": "2.3.2",
+      "pyarrow": "25.0.0",
+      "scikit-learn": "1.7.1",
+      "torch": "2.11.0"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2"
+  },
+  "schema_version": 2,
+  "sources": {
+    "development": {
+      "columns": 52,
+      "date_from": "2021-10-29",
+      "date_to": "2025-04-13",
+      "games": 4636,
+      "path": "data/processed/v2_1_training_250.parquet",
+      "players": 250,
+      "rows": 49809,
+      "seasons": [
+        "2021-22",
+        "2022-23",
+        "2023-24",
+        "2024-25"
+      ],
+      "sha256": "30f244383678af2b92605d71e9071e724e6fc1d161c48553799ecdac8a026a63"
+    },
+    "final_holdout": {
+      "columns": 52,
+      "date_from": "2025-10-30",
+      "date_to": "2026-04-12",
+      "games": 1152,
+      "path": "data/processed/v2_1_test_250_2025-26.parquet",
+      "players": 196,
+      "rows": 9347,
+      "seasons": [
+        "2025-26"
+      ],
+      "sha256": "45a785a4078ad099de4dae6f336214120fee651a8cf64980fa072b21b86c52df"
+    },
+    "parameters": {
+      "path": "reports/v2_3_production/parameters_all.json",
+      "sha256": "966fbf78f0fb5be4b82400cff62c8fe08e3eca359fb8d291dac435a2fe042468"
+    }
+  },
+  "training_cohort": "all",
+  "validation_evidence": {
+    "report_path": "reports/v2_3_rebound_conversion/report.md",
+    "report_sha256": "48674aae27b5f26e18cc6828f387a67bb701c5cbb5586daa2cc5aef55ec4d4a9"
+  }
+}

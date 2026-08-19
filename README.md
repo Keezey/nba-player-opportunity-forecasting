@@ -9,10 +9,14 @@ field-goal attempts (FGA), rebound chances (RC), and rebounds (REB) for a
 specific regular-season matchup.
 
 The project combines an interpretable recent-form and similar-player matchup
-baseline with Elastic Net residual learning. It was developed on 131,279
-player-game records from the 2021-22 through 2025-26 regular seasons.
+baseline with Elastic Net residual learning. The five-season warehouse contains
+131,279 player-game records; the final eligible 250-player modeling cohort
+contains 59,156 rows from the 2021-22 through 2025-26 regular seasons.
 
 ![Model pipeline](docs/figures/model_pipeline.png)
+
+[Read the research report](docs/research_report.pdf) or inspect its
+[LaTeX source](docs/RESEARCH_REPORT.tex).
 
 ## Results
 
@@ -26,9 +30,9 @@ each of the 2023-24, 2024-25, and 2025-26 test seasons receives equal weight.
 | Rebound chances | 3.063 | 2.934 | 4.22% |
 | Rebounds using recent conversion | 2.122 | 2.066 | 2.64% |
 
-A separate learned rebound-conversion adjustment reduced rebound MAE by an
-additional 0.86% across complete held-out seasons and 1.23% when projections
-were conditioned on approximately normal minutes.
+A separate learned rebound-conversion adjustment reduced the complete-season
+rebound MAE from `2.065` to `2.047`, an additional 0.86%, and improved it by
+1.23% when projections were conditioned on approximately normal minutes.
 
 These are single-game point forecasts, not guarantees. The system does not
 currently ingest real-time injury or lineup news and does not produce calibrated
@@ -61,13 +65,14 @@ docs/MODEL_CARD_V2.md   intended use, results, and limitations
 docs/REPRODUCIBILITY.md complete rebuild and experiment sequence
 docs/API_ENDPOINTS.md   NBA Stats endpoint and schema decisions
 docs/figures/           manuscript figures
+artifacts/v2.3.0/       final model bundles and public-safe manifests
 ```
 
-Raw NBA data, cached API responses, processed datasets, fitted models,
-manifests, and generated experiment outputs are written locally to `data/`,
-`models/`, and `reports/`. These directories are intentionally excluded from
-Git and are created automatically when needed. The repository provides the
-code and commands needed to rebuild their contents.
+Raw NBA data, cached API responses, processed datasets, intermediate models,
+and generated experiment outputs are written locally to `data/`, `models/`,
+and `reports/`. These directories are intentionally excluded from Git and are
+created automatically when needed. The two final models and their manifests
+are included under `artifacts/v2.3.0/`.
 
 ## Installation
 
@@ -87,15 +92,6 @@ On Windows, activate the environment with `.venv\Scripts\activate`.
 
 ## Quick Start
 
-An internet connection is required for uncached NBA Stats requests.
-
-Build one local regular-season partition:
-
-```bash
-python -m scripts.build_historical_store 2025-26
-python -m scripts.historical_store_status
-```
-
 Run the interpretable V1 workflow for a historical player-game using only a
 player name and date:
 
@@ -105,13 +101,14 @@ python -m scripts.predict_player "Amen Thompson" 2026-04-07
 
 The command resolves the player ID, game, opponent, and season; constructs the
 pregame baseline; selects comparison players; and returns FGA, rebound-chance,
-and rebound projections.
+and rebound projections. An internet connection is required for uncached NBA
+Stats requests.
 
-V2 inference requires a locally trained model artifact:
+Run the packaged V2.3 all-games model:
 
 ```bash
 python -m scripts.predict_player_v2 \
-  models/v2_3_250_all_games.joblib \
+  artifacts/v2.3.0/v2_3_250_all_games.joblib \
   "Amen Thompson" \
   2026-04-07
 ```
@@ -119,6 +116,13 @@ python -m scripts.predict_player_v2 \
 The all-games artifact is the default model. The separately trained
 normal-minutes artifact answers a conditional question and does not predict
 whether normal minutes will occur.
+
+For repeated analysis, optionally build a local regular-season warehouse:
+
+```bash
+python -m scripts.build_historical_store 2025-26
+python -m scripts.historical_store_status
+```
 
 ## Reproduce The Research
 

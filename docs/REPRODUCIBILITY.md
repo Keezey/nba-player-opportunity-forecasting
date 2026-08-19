@@ -290,13 +290,14 @@ the retrained production artifacts.
 
 ```bash
 python -m scripts.predict_player_v2 \
-  models/v2_3_250_all_games.joblib \
+  artifacts/v2.3.0/v2_3_250_all_games.joblib \
   "Amen Thompson" \
   2026-04-07
 ```
 
-Use `models/v2_3_250_normal_minutes.joblib` only when the question explicitly
-assumes that the player receives approximately the expected workload.
+Use `artifacts/v2.3.0/v2_3_250_normal_minutes.joblib` only when the question
+explicitly assumes that the player receives approximately the expected
+workload.
 
 ## 8. Figure Regeneration
 

@@ -1,5 +1,7 @@
+import hashlib
 import json
 import sys
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -13,6 +15,29 @@ from src.v2.release import (
     merge_training_datasets,
     validate_training_frame,
 )
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.mark.parametrize(
+    "artifact_name",
+    ["v2_3_250_all_games", "v2_3_250_normal_minutes"],
+)
+def test_packaged_v2_artifacts_match_public_manifests(artifact_name):
+    artifact_dir = PROJECT_ROOT / "artifacts" / "v2.3.0"
+    model_path = artifact_dir / f"{artifact_name}.joblib"
+    manifest_path = artifact_dir / f"{artifact_name}_manifest.json"
+
+    manifest_text = manifest_path.read_text(encoding="utf-8")
+    manifest = json.loads(manifest_text)
+    model_hash = hashlib.sha256(model_path.read_bytes()).hexdigest()
+    bundle = load_model_bundle(model_path)
+
+    assert "/Users/" not in manifest_text
+    assert model_hash == manifest["artifacts"]["model"]["sha256"]
+    assert bundle.model_type == "elastic_net"
+    assert bundle.release_metadata["release_version"] == "2.3.0"
 
 
 def _chronological_parts(frame: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
