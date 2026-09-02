@@ -122,22 +122,6 @@ python -m scripts.build_historical_store 2025-26
 python -m scripts.historical_store_status
 ```
 
-## Reproduce The Research
-
-The complete sequence is documented in
-[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). It covers:
-
-- rebuilding the five-season historical warehouse;
-- constructing the reproducible 250-player target pool;
-- generating leakage-safe historical training rows;
-- running pool-size, rolling-season, normal-minutes, robust-bound, and
-  rebound-conversion experiments; and
-- fitting the final all-games and normal-minutes artifacts.
-
-The endpoint fields and caching decisions are documented in
-[docs/API_ENDPOINTS.md](docs/API_ENDPOINTS.md). Model scope and limitations are
-summarized in [docs/MODEL_CARD_V2.md](docs/MODEL_CARD_V2.md).
-
 ## Tests
 
 The test suite is offline and does not require live NBA requests:
